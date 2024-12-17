@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-func readLists() ([]int, []int) {
+func ReadLists() ([]int, []int) {
 	file, err := os.Open("files/day1.txt")
 	if err != nil {
 		log.Fatal(err)
@@ -40,12 +40,11 @@ func readLists() ([]int, []int) {
 		}
 	}
 
-	file.Close()
 	return list1, list2
 }
 
-func main() {
-	var list1, list2 = readLists()
+func Day1() {
+	var list1, list2 = ReadLists()
 
 	sort.Ints(list1)
 	sort.Ints(list2)
@@ -55,5 +54,5 @@ func main() {
 		distance += int(math.Abs(float64(list1[i] - list2[i])))
 	}
 
-	fmt.Printf("Distance is %d\n", distance)
+	fmt.Printf("[DAY 1] - Distance is %d\n", distance)
 }
