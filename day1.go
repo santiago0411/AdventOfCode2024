@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-func ReadLists() ([]int, []int) {
+func readLists() ([]int, []int) {
 	file, err := os.Open("files/day1.txt")
 	if err != nil {
 		log.Fatal(err)
@@ -43,8 +43,8 @@ func ReadLists() ([]int, []int) {
 	return list1, list2
 }
 
-func Day1() {
-	var list1, list2 = ReadLists()
+func part1() {
+	var list1, list2 = readLists()
 
 	sort.Ints(list1)
 	sort.Ints(list2)
@@ -54,5 +54,31 @@ func Day1() {
 		distance += int(math.Abs(float64(list1[i] - list2[i])))
 	}
 
-	fmt.Printf("[DAY 1] - Distance is %d\n", distance)
+	fmt.Printf("[DAY 1 - Part 1] - Distance is %d\n", distance)
+}
+
+func part2() {
+	list1, list2 := readLists()
+	frequencies := make(map[int]int)
+
+	for _, num1 := range list1 {
+		frequencies[num1] = 0
+		for _, num2 := range list2 {
+			if num1 == num2 {
+				frequencies[num1] += 1
+			}
+		}
+	}
+
+	similarity := 0
+	for num, freq := range frequencies {
+		similarity += num * freq
+	}
+
+	fmt.Printf("[DAY 1 - Part 2] - Similarity is %d\n", similarity)
+}
+
+func Day1() {
+	part1()
+	part2()
 }
