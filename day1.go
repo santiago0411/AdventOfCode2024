@@ -43,7 +43,7 @@ func readLists() ([]int, []int) {
 	return list1, list2
 }
 
-func part1() {
+func day1Part1() {
 	var list1, list2 = readLists()
 
 	sort.Ints(list1)
@@ -57,7 +57,7 @@ func part1() {
 	fmt.Printf("[DAY 1 - Part 1] - Distance is %d\n", distance)
 }
 
-func part2() {
+func day1Part2() {
 	list1, list2 := readLists()
 	frequencies := make(map[int]int)
 
@@ -79,6 +79,6 @@ func part2() {
 }
 
 func Day1() {
-	part1()
-	part2()
+	day1Part1()
+	day1Part2()
 }
