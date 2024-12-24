@@ -3,26 +3,10 @@ package main
 import (
 	"AdventOfCode/utils"
 	"fmt"
-	"io"
 	"log"
-	"os"
 	"regexp"
 	"strings"
 )
-
-func readInput() string {
-	file, err := os.Open("files/day3.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
-	input, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal(err)
-	}
-	return string(input)
-}
 
 func day3Part1() {
 	re, err := regexp.Compile("mul\\((\\d{1,3}),(\\d{1,3})\\)")
@@ -31,7 +15,7 @@ func day3Part1() {
 		return
 	}
 
-	matches := re.FindAllStringSubmatch(readInput(), -1)
+	matches := re.FindAllStringSubmatch(utils.ReadFileToString("files/day3.txt"), -1)
 	result := 0
 	for _, m := range matches {
 		num1 := utils.ParseInt(m[1])
@@ -49,7 +33,7 @@ func day3Part2() {
 		return
 	}
 
-	matches := re.FindAllString(readInput(), -1)
+	matches := re.FindAllString(utils.ReadFileToString("files/day3.txt"), -1)
 	result := 0
 	do := true
 
